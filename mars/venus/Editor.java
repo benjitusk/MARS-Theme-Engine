@@ -69,9 +69,9 @@ public class Editor {
 		// Directory from which MARS was launched. Guaranteed to have a value.
 		defaultOpenDirectory = System.getProperty("user.dir");
 		defaultSaveDirectory = System.getProperty("user.dir");
-		userSaveDirectory = File.separator + "Users" + File.separator + "benjitusk" + File.separator + "Documents" + File.separator + "Machon Lev 2025" + File.separator + "Year I" + File.separator + "Semester II" + File.separator + "Notes";
-		currentOpenDirectory = defaultOpenDirectory;
-		currentSaveDirectory = defaultSaveDirectory;
+		userSaveDirectory = File.separator + "Users" + File.separator + "benjitusk" + File.separator + "Documents" + File.separator + "Machon Lev 2025" + File.separator + "Year I" + File.separator + "Semester II" + File.separator + "Notes" + File.separator + "Computer Architecture";
+		currentOpenDirectory = userSaveDirectory; //defaultOpenDirectory;
+		currentSaveDirectory = userSaveDirectory; //defaultSaveDirectory;
 	}
 
 	/**
