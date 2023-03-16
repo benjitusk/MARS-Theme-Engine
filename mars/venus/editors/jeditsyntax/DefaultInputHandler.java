@@ -40,97 +40,98 @@ public class DefaultInputHandler extends InputHandler {
 	@Override
 	public void addDefaultKeyBindings() {
 		if (!System.getProperty("os.name").contains("OS X")) {
-					addKeyBinding("BACK_SPACE", BACKSPACE);
-		addKeyBinding("C+BACK_SPACE", BACKSPACE_WORD);
-		addKeyBinding("DELETE", DELETE);
-		addKeyBinding("C+DELETE", DELETE_WORD);
+			addKeyBinding("BACK_SPACE", BACKSPACE);
+			addKeyBinding("C+BACK_SPACE", BACKSPACE_WORD);
+			addKeyBinding("DELETE", DELETE);
+			addKeyBinding("C+DELETE", DELETE_WORD);
 
-		addKeyBinding("ENTER", INSERT_BREAK);
-		addKeyBinding("TAB", INSERT_TAB);
+			addKeyBinding("ENTER", INSERT_BREAK);
+			addKeyBinding("TAB", INSERT_TAB);
 
-		addKeyBinding("INSERT", OVERWRITE);
-		addKeyBinding("C+\\", TOGGLE_RECT);
+			addKeyBinding("INSERT", OVERWRITE);
+			addKeyBinding("C+\\", TOGGLE_RECT);
 
-		addKeyBinding("HOME", HOME);
-		addKeyBinding("END", END);
-		addKeyBinding("C+A", SELECT_ALL);
-		addKeyBinding("S+HOME", SELECT_HOME);
-		addKeyBinding("S+END", SELECT_END);
-		addKeyBinding("C+HOME", DOCUMENT_HOME);
-		addKeyBinding("C+END", DOCUMENT_END);
-		addKeyBinding("CS+HOME", SELECT_DOC_HOME);
-		addKeyBinding("CS+END", SELECT_DOC_END);
+			addKeyBinding("HOME", HOME);
+			addKeyBinding("END", END);
+			addKeyBinding("C+A", SELECT_ALL);
+			addKeyBinding("S+HOME", SELECT_HOME);
+			addKeyBinding("S+END", SELECT_END);
+			addKeyBinding("C+HOME", DOCUMENT_HOME);
+			addKeyBinding("C+END", DOCUMENT_END);
+			addKeyBinding("CS+HOME", SELECT_DOC_HOME);
+			addKeyBinding("CS+END", SELECT_DOC_END);
 
-		addKeyBinding("PAGE_UP", PREV_PAGE);
-		addKeyBinding("PAGE_DOWN", NEXT_PAGE);
-		addKeyBinding("S+PAGE_UP", SELECT_PREV_PAGE);
-		addKeyBinding("S+PAGE_DOWN", SELECT_NEXT_PAGE);
+			addKeyBinding("PAGE_UP", PREV_PAGE);
+			addKeyBinding("PAGE_DOWN", NEXT_PAGE);
+			addKeyBinding("S+PAGE_UP", SELECT_PREV_PAGE);
+			addKeyBinding("S+PAGE_DOWN", SELECT_NEXT_PAGE);
 
-		addKeyBinding("LEFT", PREV_CHAR);
-		addKeyBinding("S+LEFT", SELECT_PREV_CHAR);
-		addKeyBinding("C+LEFT", PREV_WORD);
-		addKeyBinding("CS+LEFT", SELECT_PREV_WORD);
-		addKeyBinding("RIGHT", NEXT_CHAR);
-		addKeyBinding("S+RIGHT", SELECT_NEXT_CHAR);
-		addKeyBinding("C+RIGHT", NEXT_WORD);
-		addKeyBinding("CS+RIGHT", SELECT_NEXT_WORD);
-		addKeyBinding("UP", PREV_LINE);
-		addKeyBinding("S+UP", SELECT_PREV_LINE);
-		addKeyBinding("DOWN", NEXT_LINE);
-		addKeyBinding("S+DOWN", SELECT_NEXT_LINE);
+			addKeyBinding("LEFT", PREV_CHAR);
+			addKeyBinding("S+LEFT", SELECT_PREV_CHAR);
+			addKeyBinding("C+LEFT", PREV_WORD);
+			addKeyBinding("CS+LEFT", SELECT_PREV_WORD);
+			addKeyBinding("RIGHT", NEXT_CHAR);
+			addKeyBinding("S+RIGHT", SELECT_NEXT_CHAR);
+			addKeyBinding("C+RIGHT", NEXT_WORD);
+			addKeyBinding("CS+RIGHT", SELECT_NEXT_WORD);
+			addKeyBinding("UP", PREV_LINE);
+			addKeyBinding("S+UP", SELECT_PREV_LINE);
+			addKeyBinding("DOWN", NEXT_LINE);
+			addKeyBinding("S+DOWN", SELECT_NEXT_LINE);
 
-		addKeyBinding("C+ENTER", REPEAT);
+			addKeyBinding("C+ENTER", REPEAT);
 
-		// Clipboard
-		addKeyBinding("C+C", CLIP_COPY);
-		addKeyBinding("C+V", CLIP_PASTE);
-		addKeyBinding("C+X", CLIP_CUT);
-	} else {
-		addKeyBinding("BACK_SPACE", BACKSPACE);
-		addKeyBinding("A+BACK_SPACE", BACKSPACE_WORD);
-		addKeyBinding("DELETE", DELETE);
-		addKeyBinding("A+DELETE", DELETE_WORD);
+			// Clipboard
+			addKeyBinding("C+C", CLIP_COPY);
+			addKeyBinding("C+V", CLIP_PASTE);
+			addKeyBinding("C+X", CLIP_CUT);
+		} else {
+			addKeyBinding("BACK_SPACE", BACKSPACE);
+			addKeyBinding("A+BACK_SPACE", BACKSPACE_WORD);
+			addKeyBinding("M+BACK_SPACE", DELETE_LINE);
+			addKeyBinding("DELETE", DELETE);
+			addKeyBinding("A+DELETE", DELETE_WORD);
 
-		addKeyBinding("ENTER", INSERT_BREAK);
-		addKeyBinding("TAB", INSERT_TAB);
+			addKeyBinding("ENTER", INSERT_BREAK);
+			addKeyBinding("TAB", INSERT_TAB);
 
-		addKeyBinding("INSERT", OVERWRITE);
-		addKeyBinding("C+\\", TOGGLE_RECT);
+			addKeyBinding("INSERT", OVERWRITE);
+			addKeyBinding("C+\\", TOGGLE_RECT);
 
-		addKeyBinding("M+LEFT", HOME);
-		addKeyBinding("M+RIGHT", END);
-		addKeyBinding("M+A", SELECT_ALL);
-		addKeyBinding("MS+LEFT", SELECT_HOME);
-		addKeyBinding("MS+RIGHT", SELECT_END);
-		addKeyBinding("M+UP", DOCUMENT_HOME);
-		addKeyBinding("M+DOWN", DOCUMENT_END);
-		addKeyBinding("MS+UP", SELECT_DOC_HOME);
-		addKeyBinding("MS+DOWN", SELECT_DOC_END);
+			addKeyBinding("M+LEFT", HOME);
+			addKeyBinding("M+RIGHT", END);
+			addKeyBinding("M+A", SELECT_ALL);
+			addKeyBinding("MS+LEFT", SELECT_HOME);
+			addKeyBinding("MS+RIGHT", SELECT_END);
+			addKeyBinding("M+UP", DOCUMENT_HOME);
+			addKeyBinding("M+DOWN", DOCUMENT_END);
+			addKeyBinding("MS+UP", SELECT_DOC_HOME);
+			addKeyBinding("MS+DOWN", SELECT_DOC_END);
 
-		addKeyBinding("PAGE_UP", PREV_PAGE);
-		addKeyBinding("PAGE_DOWN", NEXT_PAGE);
-		addKeyBinding("S+PAGE_UP", SELECT_PREV_PAGE);
-		addKeyBinding("S+PAGE_DOWN", SELECT_NEXT_PAGE);
+			addKeyBinding("PAGE_UP", PREV_PAGE);
+			addKeyBinding("PAGE_DOWN", NEXT_PAGE);
+			addKeyBinding("S+PAGE_UP", SELECT_PREV_PAGE);
+			addKeyBinding("S+PAGE_DOWN", SELECT_NEXT_PAGE);
 
-		addKeyBinding("LEFT", PREV_CHAR);
-		addKeyBinding("S+LEFT", SELECT_PREV_CHAR);
-		addKeyBinding("A+LEFT", PREV_WORD);
-		addKeyBinding("AS+LEFT", SELECT_PREV_WORD);
-		addKeyBinding("RIGHT", NEXT_CHAR);
-		addKeyBinding("S+RIGHT", SELECT_NEXT_CHAR);
-		addKeyBinding("A+RIGHT", NEXT_WORD);
-		addKeyBinding("AS+RIGHT", SELECT_NEXT_WORD);
-		addKeyBinding("UP", PREV_LINE);
-		addKeyBinding("S+UP", SELECT_PREV_LINE);
-		addKeyBinding("DOWN", NEXT_LINE);
-		addKeyBinding("S+DOWN", SELECT_NEXT_LINE);
+			addKeyBinding("LEFT", PREV_CHAR);
+			addKeyBinding("S+LEFT", SELECT_PREV_CHAR);
+			addKeyBinding("A+LEFT", PREV_WORD);
+			addKeyBinding("AS+LEFT", SELECT_PREV_WORD);
+			addKeyBinding("RIGHT", NEXT_CHAR);
+			addKeyBinding("S+RIGHT", SELECT_NEXT_CHAR);
+			addKeyBinding("A+RIGHT", NEXT_WORD);
+			addKeyBinding("AS+RIGHT", SELECT_NEXT_WORD);
+			addKeyBinding("UP", PREV_LINE);
+			addKeyBinding("S+UP", SELECT_PREV_LINE);
+			addKeyBinding("DOWN", NEXT_LINE);
+			addKeyBinding("S+DOWN", SELECT_NEXT_LINE);
 
-		addKeyBinding("AS+ENTER", REPEAT);
+			addKeyBinding("AS+ENTER", REPEAT);
 
-		// Clipboard
-		addKeyBinding("M+C", CLIP_COPY);
-		addKeyBinding("M+V", CLIP_PASTE);
-		addKeyBinding("M+X", CLIP_CUT);
+			// Clipboard
+			addKeyBinding("M+C", CLIP_COPY);
+			addKeyBinding("M+V", CLIP_PASTE);
+			addKeyBinding("M+X", CLIP_CUT);
 		}
 	}
 

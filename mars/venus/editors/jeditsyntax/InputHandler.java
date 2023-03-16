@@ -48,6 +48,7 @@ public abstract class InputHandler extends KeyAdapter {
 	public static final ActionListener BACKSPACE_WORD = new backspace_word();
 	public static final ActionListener DELETE = new delete();
 	public static final ActionListener DELETE_WORD = new delete_word();
+	public static final ActionListener DELETE_LINE = new delete_line();
 	public static final ActionListener END = new end(false);
 	public static final ActionListener DOCUMENT_END = new document_end(false);
 	public static final ActionListener SELECT_ALL = new select_all();
@@ -488,6 +489,38 @@ public abstract class InputHandler extends KeyAdapter {
 
 			try {
 				textArea.getDocument().remove(start, caret + lineStart - start);
+			} catch (final BadLocationException bl) {
+				bl.printStackTrace();
+			}
+		}
+	}
+
+	public static class delete_line implements ActionListener {
+
+		@Override
+		public void actionPerformed(final ActionEvent evt) {
+			final JEditTextArea textArea = getTextArea(evt);
+			final int start = textArea.getSelectionEnd();
+			// if (start != textArea.getSelectionEnd()) { textArea.setSelectedText(""); }
+
+			final int line = textArea.getCaretLine();
+			final int lineStart = textArea.getLineStartOffset(line);
+			int caret = start - lineStart;
+
+			// final String lineText = textArea.getLineText(textArea.getCaretLine());
+
+			if (caret == 0) {
+					textArea.getToolkit().beep();
+					return;
+				}
+			// 	caret++;
+			// } else {
+			// final String noWordSep = (String) textArea.getDocument().getProperty("noWordSep");
+			// caret = TextUtilities.findWordEnd(lineText, caret, noWordSep);
+			// }
+
+			try {
+				textArea.getDocument().remove(lineStart, caret);
 			} catch (final BadLocationException bl) {
 				bl.printStackTrace();
 			}
