@@ -39,7 +39,7 @@ public class DefaultInputHandler extends InputHandler {
 	 */
 	@Override
 	public void addDefaultKeyBindings() {
-		if (System.getProperty("os.name").contains("OS X")) {
+		if (!System.getProperty("os.name").contains("OS X")) {
 					addKeyBinding("BACK_SPACE", BACKSPACE);
 		addKeyBinding("C+BACK_SPACE", BACKSPACE_WORD);
 		addKeyBinding("DELETE", DELETE);
