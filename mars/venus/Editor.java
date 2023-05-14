@@ -2,6 +2,8 @@ package mars.venus;
 
 import java.io.File;
 
+import mars.Globals;
+
 /*
  * Copyright (c) 2003-2007, Pete Sanderson and Kenneth Vollmar
  *
@@ -53,7 +55,6 @@ public class Editor {
 	private final String defaultOpenDirectory;
 	private String currentOpenDirectory;
 	private final String defaultSaveDirectory;
-	private final String userSaveDirectory;
 	private String currentSaveDirectory;
 
 	/**
@@ -62,16 +63,24 @@ public class Editor {
 	 * @param ui the GUI that owns this editor
 	 */
 	public Editor(final VenusUI ui) {
+		final String defaultDirectory = Globals.getSettings().getEditorDefaultDirectory();
 		mainUI = ui;
 		FileStatus.reset();
 		mainUIbaseTitle = mainUI.getTitle();
 		newUsageCount = 0;
+		// Set the current directory for Open/Save operations to the
+		// saved property value, or to the directory from which MARS
+		// was launched if no property value.
 		// Directory from which MARS was launched. Guaranteed to have a value.
 		defaultOpenDirectory = System.getProperty("user.dir");
 		defaultSaveDirectory = System.getProperty("user.dir");
-		userSaveDirectory = File.separator + "Users" + File.separator + "benjitusk" + File.separator + "Documents" + File.separator + "Machon Lev 2025" + File.separator + "Year I" + File.separator + "Semester II" + File.separator + "Notes" + File.separator + "Computer Architecture";
-		currentOpenDirectory = userSaveDirectory; //defaultOpenDirectory;
-		currentSaveDirectory = userSaveDirectory; //defaultSaveDirectory;
+		if (defaultDirectory.equals("")) {
+			currentOpenDirectory = defaultOpenDirectory;
+			currentSaveDirectory = defaultSaveDirectory;
+		} else {
+			currentOpenDirectory = defaultDirectory;
+			currentSaveDirectory = defaultDirectory;
+		}
 	}
 
 	/**

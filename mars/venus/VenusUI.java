@@ -105,7 +105,7 @@ public class VenusUI extends JFrame {
 	private JCheckBoxMenuItem settingsLabel, settingsPopupInput, settingsValueDisplayBase, settingsAddressDisplayBase,
 			settingsExtended, settingsAssembleOnOpen, settingsAssembleAll, settingsWarningsAreErrors,
 			settingsStartAtMain, settingsDelayedBranching, settingsProgramArguments, settingsSelfModifyingCode;
-	private JMenuItem settingsExceptionHandler, settingsEditor, settingsHighlighting, settingsThemes,
+	private JMenuItem settingsExceptionHandler, settingsDefaultDirectory, settingsEditor, settingsHighlighting, settingsThemes,
 			settingsMemoryConfiguration;
 	private JMenuItem helpHelp, helpAbout;
 
@@ -130,7 +130,7 @@ public class VenusUI extends JFrame {
 			settingsAddressDisplayBaseAction, settingsExtendedAction, settingsAssembleOnOpenAction,
 			settingsAssembleAllAction, settingsWarningsAreErrorsAction, settingsStartAtMainAction,
 			settingsProgramArgumentsAction, settingsDelayedBranchingAction, settingsExceptionHandlerAction,
-			settingsEditorAction, settingsHighlightingAction, settingsThemesAction, settingsMemoryConfigurationAction,
+			settingsEditorAction, settingsDefaultDirectoryAction, settingsHighlightingAction, settingsThemesAction, settingsMemoryConfigurationAction,
 			settingsSelfModifyingCodeAction;
 	private Action helpHelpAction, helpAboutAction;
 
@@ -614,6 +614,13 @@ public class VenusUI extends JFrame {
 					null,
 					null,
 					mainUI);
+			settingsDefaultDirectoryAction = new SettingsDefaultDirectoryAction(
+					"Default Directory...",
+					null,
+					"Set the default directory from which to open files.",
+					null,
+					null,
+					mainUI);
 			settingsEditorAction = new SettingsEditorAction(
 					"Editor...",
 					null,
@@ -943,6 +950,7 @@ public class VenusUI extends JFrame {
 		settingsProgramArguments = new JCheckBoxMenuItem(settingsProgramArgumentsAction);
 		settingsProgramArguments.setSelected(Globals.getSettings().getProgramArguments());
 		settingsEditor = new JMenuItem(settingsEditorAction);
+		settingsDefaultDirectory = new JMenuItem(settingsDefaultDirectoryAction);
 		settingsHighlighting = new JMenuItem(settingsHighlightingAction);
 		settingsThemes = new JMenuItem(settingsThemesAction);
 		settingsExceptionHandler = new JMenuItem(settingsExceptionHandlerAction);
@@ -964,6 +972,7 @@ public class VenusUI extends JFrame {
 		settings.add(settingsSelfModifyingCode);
 		settings.addSeparator();
 		settings.add(settingsEditor);
+		settings.add(settingsDefaultDirectory);
 		settings.add(settingsHighlighting);
 		settings.add(settingsThemes);
 		settings.add(settingsExceptionHandler);

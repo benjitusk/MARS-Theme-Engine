@@ -189,15 +189,17 @@ public class Settings extends Observable {
 	 * generated (if popup enabled)
 	 */
 	public static final int EDITOR_POPUP_PREFIX_LENGTH = 6;
+	/** Default Directory. */
+	public static final int EDITOR_DEFAULT_DIRECTORY = 7;
 	// Match the above by position.
-	private static final String[] stringSettingsKeys = { "ExceptionHandler", "TextColumnOrder", "LabelSortState", "MemoryConfiguration", "CaretBlinkRate", "EditorTabSize", "EditorPopupPrefixLength" };
+	private static final String[] stringSettingsKeys = { "ExceptionHandler", "TextColumnOrder", "LabelSortState", "MemoryConfiguration", "CaretBlinkRate", "EditorTabSize", "EditorPopupPrefixLength", "DefaultDirectory" };
 
 	/**
 	 * Last resort default values for String settings; will use only if neither the
 	 * Preferences nor the properties file work. If you wish to change, do so before
 	 * instantiating the Settings object. Must match key by list position.
 	 */
-	private static String[] defaultStringSettingsValues = { "", "0 1 2 3 4", "0", "", "500", "8", "2" };
+	private static String[] defaultStringSettingsValues = { "", "0 1 2 3 4", "0", "", "500", "8", "2", "" };
 
 	// FONT SETTINGS.  Each array position has associated name.
 	/** Font for the text editor */
@@ -714,6 +716,11 @@ public class Settings extends Observable {
 		return rate;
 	}
 
+	public String getEditorDefaultDirectory() {
+		return stringSettingsValues[EDITOR_DEFAULT_DIRECTORY];
+ }
+
+
 	/**
 	 * Get the tab size in characters.
 	 *
@@ -1105,9 +1112,19 @@ public class Settings extends Observable {
 	 */
 	public void setEditorPopupPrefixLength(final int length) {
 		setStringSetting(
-			EDITOR_POPUP_PREFIX_LENGTH,
-			""
-				+ length);
+				EDITOR_POPUP_PREFIX_LENGTH,
+				""
+						+ length);
+	}
+	
+	/**
+	 * Set the editor's default directory.
+	 *
+	 * @param dir the directory to set
+	 */
+
+	public void setEditorDefaultDirectory(final String dir) {
+		setStringSetting(EDITOR_DEFAULT_DIRECTORY, dir);
 	}
 
 	/**
