@@ -35,6 +35,7 @@ import javax.swing.KeyStroke;
 import javax.swing.ListCellRenderer;
 import javax.swing.ScrollPaneConstants;
 import javax.swing.SwingConstants;
+import javax.swing.UIManager;
 import javax.swing.event.HyperlinkEvent;
 import javax.swing.event.HyperlinkListener;
 import javax.swing.text.html.HTMLDocument;
@@ -90,7 +91,9 @@ public class HelpHelpAction extends GuiAction {
 	private Dimension getSize() { return new Dimension(800, 600); }
 
 	// Light gray background color for alternating lines of the instruction lists
-	static Color altBackgroundColor = new Color(0xEE, 0xEE, 0xEE);
+	// static Color altBackgroundColor = UIManager.getColor("Table.stripeColor").darker();
+	static Color altBackgroundColor = UIManager.getColor("List.background").darker();
+	// new Color(0x00, 0xEE, 0xEE);
 
 	/**
 	 * Separates Instruction name descriptor from detailed (operation) description
