@@ -313,11 +313,22 @@ public class JEditTextArea extends JComponent {
 			lineNumbersVertical.setBlockIncrement(visibleLines * height);
 		}
 
-		final int width = painter.getWidth();
-		if (horizontal != null && width != 0) {
-			horizontal.setValues(-horizontalOffset, width, 0, width * 5);
+		if (horizontal != null && visibleLines != 0) {
+			final String longestLine = painter.getLongestLineText();
+			// Handle tab characters by replacing them with textArea.tabChar spaces
+
+			final int longestLineWidth = painter.getFontMetrics().stringWidth(longestLine);
+			final int newValue, newExtent;
+			if (longestLineWidth > painter.getWidth()) {
+				newValue = -horizontalOffset;
+				newExtent = painter.getWidth();
+			} else {
+				newValue = 0;
+				newExtent = longestLineWidth;
+			}
+			horizontal.setValues(newValue, newExtent, 0, longestLineWidth);
 			horizontal.setUnitIncrement(painter.getFontMetrics().charWidth('w'));
-			horizontal.setBlockIncrement(width / 2);
+			horizontal.setBlockIncrement(painter.getWidth() / 2);
 		}
 	}
 
@@ -1741,12 +1752,32 @@ public class JEditTextArea extends JComponent {
 
 		@Override
 		public void mouseWheelMoved(final MouseWheelEvent e) {
-			final int maxMotion = Math.abs(e.getWheelRotation()) * LINES_PER_MOUSE_WHEEL_NOTCH;
+			if (e.isShiftDown()) {
+				// Scroll horizontally as much as the width of a character
+				final int SCROLL_INCREMENT = painter.getFontMetrics().charWidth('W');
+				final int scrollAmount = e.getScrollAmount() * e.getWheelRotation() * SCROLL_INCREMENT;
+				int newOffset = getHorizontalOffset() - scrollAmount; 
+				newOffset *= -1; // Because positive is to the left
+				// Don't scroll past the left margin
+				newOffset = Math.max(newOffset, 0);
+				// Don't scroll past the length of the longest line
+				// Calculate the length of the longest line
+				final int longestLineWidth = painter.getFontMetrics().stringWidth(painter.getLongestLineText());
+
+				// final int visibleWidth = painter.getWidth();
+				newOffset = Math.min(newOffset, longestLineWidth - painter.getWidth());
+				// reverse the sign again
+				newOffset *= -1;
+				setHorizontalOffset(newOffset);
+			} else {
+
+				final int maxMotion = Math.abs(e.getWheelRotation()) * 1;
 			if (e.getWheelRotation() < 0) {
 				setFirstLine(getFirstLine() - Math.min(maxMotion, getFirstLine()));
 			} else {
 				setFirstLine(getFirstLine() + Math.min(maxMotion, Math.max(0, getLineCount() - (getFirstLine()
 						+ visibleLines))));
+				}
 			}
 		}
 	}

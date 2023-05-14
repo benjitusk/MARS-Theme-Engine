@@ -479,6 +479,30 @@ public class TextAreaPainter extends JComponent implements TabExpander {
 	}
 
 	/**
+	 * Returns the length of the longest line.
+	 */
+	public final String getLongestLineText() {
+		int longestLineLength = 0;
+		int longestLineIndex = 0;
+		textArea.getDocument();
+		for (int i = 0; i < textArea.getLineCount(); i++) {
+			final String text = textArea.getLineText(i);
+			int lineLength = text.length();
+			// Take into account the \t characters
+			for (int j = 0; j < text.length(); j++) {
+				if (text.charAt(j) == '\t') {
+					lineLength += tabSizeChars - 1;
+				}
+			}
+			if (lineLength > longestLineLength) {
+				longestLineLength = lineLength;
+				longestLineIndex = i;
+			}
+		}
+		return textArea.getLineText(longestLineIndex).replaceAll("\t", " ".repeat(tabSizeChars) );
+	}
+
+	/**
 	 * Returns the painter's preferred size.
 	 */
 	@Override
