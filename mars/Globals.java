@@ -92,7 +92,7 @@ public class Globals {
 	 * The current MARS version number. Can't wait for "initialize()" call to get
 	 * it.
 	 */
-	public static final String version = "4.6.Tusk";
+	public static final String version = "4.5.2";
 	/** List of accepted file extensions for MIPS assembly source files. */
 	public static final ArrayList fileExtensions = getFileExtensions();
 	/** Maximum length of scrolled message window (MARS Messages and Run I/O) */
@@ -120,9 +120,9 @@ public class Globals {
 
 	public static boolean runSpeedPanelExists = false;
 
-	private static String getCopyrightYears() { return "2003-3002"; }
+	private static String getCopyrightYears() { return "2003-2014"; }
 
-	private static String getCopyrightHolders() { return "Benji Tusk"; }
+	private static String getCopyrightHolders() { return "Pete Sanderson and Kenneth Vollmar"; }
 
 	public static void setGui(final VenusUI g) { gui = g; }
 
