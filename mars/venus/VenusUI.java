@@ -2,6 +2,7 @@ package mars.venus;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
+import java.awt.Event;
 import java.awt.FlowLayout;
 import java.awt.Frame;
 import java.awt.Image;
@@ -383,7 +384,8 @@ public class VenusUI extends JFrame {
 										+ "Redo22.png"))),
 					"Redo last edit",
 					new Integer(KeyEvent.VK_R),
-					KeyStroke.getKeyStroke(KeyEvent.VK_Y, Toolkit.getDefaultToolkit().getMenuShortcutKeyMask()),
+					// Set the shortcut key to Ctrl-Shft-Z.
+					KeyStroke.getKeyStroke(KeyEvent.VK_Z, Toolkit.getDefaultToolkit().getMenuShortcutKeyMask() | Event.SHIFT_MASK),
 					mainUI);
 			editCutAction = new EditCutAction(
 					"Cut",
